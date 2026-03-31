@@ -1,9 +1,11 @@
 import axios from 'axios'
+
 const axiosClient = axios.create({
-          baseURL:'http://localhost:3000',
-          withCredentials:true, // browser cookies ko add kr dena 
-          headers:{
-                    'Content-Type': 'application/json' // jo bhi bhej rha hun vo json type ka hoga
-          }
+  baseURL: import.meta.env.VITE_API_BASE_URL, 
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json'
+  }
 })
+
 export default axiosClient;
