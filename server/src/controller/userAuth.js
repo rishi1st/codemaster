@@ -27,13 +27,13 @@ const log = {
 //  Shared helper — sign JWT and set HttpOnly cookie
 // ─────────────────────────────────────────────────────────────────────────────
 const issueTokenCookie = (res, payload) => {
-  const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: 3600 });
-  res.cookie('token', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    maxAge: 60 * 60 * 1000,
-  });
+  const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: 12 * 60 * 60 });
+ res.cookie('token', token, {
+  httpOnly: true,
+  secure: true,          
+  sameSite: 'none',      
+  maxAge: 12 * 60 * 60 * 1000,
+});
   return token;
 };
 

@@ -113,7 +113,7 @@ ProtectedRoute.displayName = "ProtectedRoute";
 const PublicRoute = memo(({ children }) => {
   const { isAuthenticated, loading } = useSelector((s) => s.auth);
 
-  if (loading) return <LoadingSpinner />;
+  // if (loading) return <LoadingSpinner />;
   if (isAuthenticated) return <Navigate to="/" replace />;
 
   return children;
@@ -136,7 +136,7 @@ const App = () => {
   // Bug fix: don't block the entire UI while checkAuth is in flight. 
   // Previously the full-screen spinner blocked the public homepage too.
   // Only block on the very first load (no user data yet).
-  if (loading) return <LoadingSpinner />;
+  // if (loading) return <LoadingSpinner />;
 
   const navbarVisible = shouldShowNavbar(location.pathname);
 

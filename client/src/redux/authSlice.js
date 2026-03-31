@@ -143,7 +143,9 @@ const authSlice = createSlice({
       .addCase(googleAuthUser.rejected,   rejectedCase)
 
       // ── Check Auth (silent — don't set error on 401) ───────────────────────
-      .addCase(checkAuth.pending,   pendingCase)
+      .addCase(checkAuth.pending,   (state)=>{
+        state.loading = false
+      })
       .addCase(checkAuth.fulfilled, fulfilledCase)
       .addCase(checkAuth.rejected,  (state) => {
         // Bug fix: don't set state.error here — 401 on check is normal
